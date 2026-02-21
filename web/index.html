@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SmartCodingAssistant GUI</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="bg"></div>
+    <main class="app">
+      <header>
+        <h1>🤖 Smart Coding Assistant</h1>
+        <p>Turn plain-English coding tasks into plans, commands, and code-ready output.</p>
+      </header>
+
+      <section class="panel input-panel">
+        <label for="task">Task</label>
+        <textarea id="task" placeholder="e.g., add function parse_config to parser" rows="4"></textarea>
+
+        <label for="files">Optional file list (comma-separated)</label>
+        <input id="files" type="text" placeholder="coding_assistant.py, tests/test_assistant.py" />
+
+        <label class="checkline">
+          <input id="apply" type="checkbox" />
+          Apply generated edits
+        </label>
+
+        <button id="runBtn">Run Assistant</button>
+      </section>
+
+      <section class="panel output-panel">
+        <div class="chips">
+          <span class="chip" id="intentChip">Intent: -</span>
+        </div>
+        <pre id="output">Results will appear here...</pre>
+      </section>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
