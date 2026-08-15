@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="A polished, responsive landing page template with clear calls to action and accessible design." />
+  <title>Better Landing Page</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f7f9fc;
+      --surface: #ffffff;
+      --text: #172033;
+      --muted: #657085;
+      --primary: #4f46e5;
+      --primary-dark: #3730a3;
+      --accent: #06b6d4;
+      --ring: rgba(79, 70, 229, 0.28);
+      --shadow: 0 24px 70px rgba(23, 32, 51, 0.12);
+      --radius: 24px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at top left, rgba(79, 70, 229, 0.18), transparent 32rem),
+        radial-gradient(circle at top right, rgba(6, 182, 212, 0.18), transparent 30rem),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 28px 0;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+
+    .logo {
+      display: grid;
+      width: 42px;
+      height: 42px;
+      place-items: center;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: white;
+      box-shadow: 0 12px 28px rgba(79, 70, 229, 0.24);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    nav a:hover,
+    nav a:focus-visible {
+      color: var(--primary);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(300px, 0.95fr);
+      gap: 48px;
+      align-items: center;
+      padding: 72px 0 56px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 18px;
+      padding: 8px 12px;
+      border: 1px solid rgba(79, 70, 229, 0.16);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.72);
+      color: var(--primary-dark);
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    h1 {
+      margin: 0;
+      max-width: 780px;
+      font-size: clamp(2.7rem, 7vw, 5.8rem);
+      line-height: 0.95;
+      letter-spacing: -0.08em;
+    }
+
+    .lead {
+      max-width: 640px;
+      margin: 24px 0 0;
+      color: var(--muted);
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 32px;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: 0 20px;
+      border-radius: 999px;
+      font-weight: 800;
+      transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+    }
+
+    .button:hover,
+    .button:focus-visible {
+      transform: translateY(-2px);
+      outline: 4px solid var(--ring);
+    }
+
+    .primary {
+      background: var(--primary);
+      color: white;
+      box-shadow: 0 16px 36px rgba(79, 70, 229, 0.28);
+    }
+
+    .secondary {
+      background: var(--surface);
+      color: var(--primary-dark);
+      box-shadow: 0 10px 28px rgba(23, 32, 51, 0.08);
+    }
+
+    .showcase {
+      position: relative;
+      min-height: 460px;
+      border-radius: calc(var(--radius) + 8px);
+      background: linear-gradient(150deg, #ffffff 0%, #eef2ff 52%, #cffafe 100%);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .showcase::before,
+    .showcase::after {
+      position: absolute;
+      content: "";
+      border-radius: 999px;
+      filter: blur(2px);
+    }
+
+    .showcase::before {
+      width: 220px;
+      height: 220px;
+      right: -52px;
+      top: -42px;
+      background: rgba(79, 70, 229, 0.22);
+    }
+
+    .showcase::after {
+      width: 260px;
+      height: 260px;
+      left: -82px;
+      bottom: -72px;
+      background: rgba(6, 182, 212, 0.22);
+    }
+
+    .card {
+      position: absolute;
+      inset: 42px;
+      z-index: 1;
+      display: grid;
+      align-content: space-between;
+      padding: 28px;
+      border: 1px solid rgba(255, 255, 255, 0.75);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.76);
+      backdrop-filter: blur(18px);
+    }
+
+    .metric {
+      display: grid;
+      gap: 10px;
+    }
+
+    .metric strong {
+      font-size: clamp(3rem, 8vw, 5.5rem);
+      line-height: 1;
+      letter-spacing: -0.08em;
+    }
+
+    .metric span,
+    .mini-card span {
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .mini-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .mini-card {
+      padding: 18px;
+      border-radius: 18px;
+      background: white;
+      box-shadow: 0 10px 26px rgba(23, 32, 51, 0.08);
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+      padding: 28px 0 80px;
+    }
+
+    .feature {
+      padding: 26px;
+      border: 1px solid rgba(101, 112, 133, 0.14);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, 0.78);
+      box-shadow: 0 12px 34px rgba(23, 32, 51, 0.06);
+    }
+
+    .feature h2 {
+      margin: 0 0 10px;
+      font-size: 1.15rem;
+    }
+
+    .feature p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    footer {
+      padding: 28px 0 40px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    @media (max-width: 820px) {
+      header,
+      nav,
+      .actions {
+        align-items: flex-start;
+      }
+
+      header,
+      nav {
+        flex-direction: column;
+      }
+
+      .hero,
+      .features {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 44px;
+      }
+
+      .showcase {
+        min-height: 380px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .page {
+        width: min(100% - 24px, 1120px);
+      }
+
+      .card {
+        inset: 18px;
+        padding: 20px;
+      }
+
+      .mini-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header aria-label="Site header">
+      <a class="brand" href="#" aria-label="Better landing page home">
+        <span class="logo" aria-hidden="true">✦</span>
+        <span>BetterSite</span>
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="#features">Features</a>
+        <a href="#results">Results</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div>
+          <p class="eyebrow">✨ Clean, modern, and responsive</p>
+          <h1 id="hero-title">Make your page feel polished in seconds.</h1>
+          <p class="lead">
+            A refined starter page with stronger hierarchy, accessible colors, mobile-friendly layout,
+            and clear calls to action. Replace the copy with your own and you are ready to publish.
+          </p>
+          <div class="actions">
+            <a class="button primary" href="#contact">Get started</a>
+            <a class="button secondary" href="#features">See what changed</a>
+          </div>
+        </div>
+
+        <aside class="showcase" id="results" aria-label="Example results dashboard">
+          <div class="card">
+            <div class="metric">
+              <strong>2.4×</strong>
+              <span>Clearer visual impact</span>
+            </div>
+            <div class="mini-grid">
+              <div class="mini-card">
+                <strong>Fast</strong><br />
+                <span>No external dependencies</span>
+              </div>
+              <div class="mini-card">
+                <strong>Flexible</strong><br />
+                <span>Easy to customize</span>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </section>
+
+      <section class="features" id="features" aria-label="Page improvements">
+        <article class="feature">
+          <h2>Better structure</h2>
+          <p>Semantic landmarks, focused sections, and descriptive labels make the page easier to navigate.</p>
+        </article>
+        <article class="feature">
+          <h2>Sharper styling</h2>
+          <p>Balanced spacing, modern typography, soft depth, and gradients create a more premium feel.</p>
+        </article>
+        <article class="feature">
+          <h2>Responsive layout</h2>
+          <p>The design adapts cleanly from desktop to mobile without requiring JavaScript or frameworks.</p>
+        </article>
+      </section>
+    </main>
+
+    <footer id="contact">
+      <p>Ready to customize? Edit the headings, links, and feature cards to match your project.</p>
+    </footer>
+  </div>
+</body>
+</html>
